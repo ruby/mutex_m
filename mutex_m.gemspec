@@ -2,7 +2,7 @@ require_relative "lib/mutex_m"
 
 Gem::Specification.new do |spec|
   spec.name          = "mutex_m"
-  spec.version       = MutexM::VERSION
+  spec.version       = Mutex_m::VERSION
   spec.authors       = ["Keiju ISHITSUKA"]
   spec.email         = ["keiju@ruby-lang.org"]
 
