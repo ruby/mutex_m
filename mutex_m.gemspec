@@ -3,8 +3,8 @@ require_relative "lib/mutex_m"
 Gem::Specification.new do |spec|
   spec.name          = "mutex_m"
   spec.version       = MutexM::VERSION
-  spec.authors       = ["SHIBATA Hiroshi"]
-  spec.email         = ["hsbt@ruby-lang.org"]
+  spec.authors       = ["Keiju ISHITSUKA"]
+  spec.email         = ["keiju@ruby-lang.org"]
 
   spec.summary       = %q{TODO: Write a short summary, because RubyGems requires one.}
   spec.description   = %q{TODO: Write a longer description or delete this line.}
