@@ -1,8 +1,6 @@
 # Mutex_m
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/mutex_m`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+When 'mutex_m' is required, any object that extends or includes Mutex_m will be treated like a Mutex.
 
 ## Installation
 
@@ -22,7 +20,29 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Start by requiring the standard library Mutex_m:
+
+```
+  require "mutex_m.rb"
+```
+
+From here you can extend an object with Mutex instance methods:
+
+```
+  obj = Object.new
+  obj.extend Mutex_m
+```
+
+Or mixin Mutex_m into your module to your class inherit Mutex instance methods.
+
+```
+  class Foo
+    include Mutex_m
+    # ...
+  end
+  obj = Foo.new
+  # this obj can be handled like Mutex
+g```
 
 ## Development
 
