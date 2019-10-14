@@ -22,27 +22,28 @@ Or install it yourself as:
 
 Start by requiring the standard library Mutex_m:
 
-```
-  require "mutex_m.rb"
+```ruby
+require "mutex_m.rb"
 ```
 
 From here you can extend an object with Mutex instance methods:
 
-```
-  obj = Object.new
-  obj.extend Mutex_m
+```ruby
+obj = Object.new
+obj.extend Mutex_m
 ```
 
 Or mixin Mutex_m into your module to your class inherit Mutex instance methods.
 
+```ruby
+class Foo
+  include Mutex_m
+  # ...
+end
+
+obj = Foo.new
+# this obj can be handled like Mutex
 ```
-  class Foo
-    include Mutex_m
-    # ...
-  end
-  obj = Foo.new
-  # this obj can be handled like Mutex
-g```
 
 ## Development
 
