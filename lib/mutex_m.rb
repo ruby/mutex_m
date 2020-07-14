@@ -109,8 +109,17 @@ module Mutex_m
     @_mutex = Thread::Mutex.new
   end
 
-  def initialize(*args) # :nodoc:
-    mu_initialize
-    super
+  if RUBY_VERSION < '2.7'
+    def initialize(*args) # :nodoc:
+      mu_initialize
+      super
+    end
+  else
+    eval <<~RUBY, binding, __FILE__, __LINE__ + 1
+      def initialize(...) # :nodoc:
+        mu_initialize
+        super
+      end
+    RUBY
   end
 end
