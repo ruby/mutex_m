@@ -55,4 +55,47 @@ class TestMutexM < Test::Unit::TestCase
   def test_initialize_no_args
     assert NoArgInitializeChild.new
   end
+
+  class PositionalArgInitializeParent
+    attr_reader :x
+
+    def initialize(x)
+      @x = x
+    end
+  end
+
+  def test_include
+    c = PositionalArgInitializeParent.dup
+    c.class_eval do
+      alias initialize initialize
+      def initialize(x)
+        @x = x
+        super()
+      end
+      include Mutex_m
+    end
+    o = c.new(1)
+    assert_equal(1, o.synchronize{o.x})
+  end
+
+  def test_prepend
+    c = PositionalArgInitializeParent.dup
+    c.prepend Mutex_m
+    o = c.new(1)
+    assert_equal(1, o.synchronize{o.x})
+  end
+
+  def test_include_sub
+    c = Class.new(PositionalArgInitializeParent)
+    c.include Mutex_m
+    o = c.new(1)
+    assert_equal(1, o.synchronize{o.x})
+  end
+
+  def test_prepend_sub
+    c = Class.new(PositionalArgInitializeParent)
+    c.prepend Mutex_m
+    o = c.new(1)
+    assert_equal(1, o.synchronize{o.x})
+  end
 end

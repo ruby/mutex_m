@@ -34,10 +34,12 @@ obj.extend Mutex_m
 ```
 
 Or mixin Mutex_m into your module to your class inherit Mutex instance methods.
+You should probably use `prepend` to mixin (if you use `include`, you need to
+make sure that you call `super` inside `initialize`).
 
 ```ruby
 class Foo
-  include Mutex_m
+  prepend Mutex_m
   # ...
 end
 

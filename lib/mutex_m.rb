@@ -53,6 +53,11 @@ module Mutex_m
     }
   end
 
+  def Mutex_m.prepend_features(cl) # :nodoc:
+    super
+    define_aliases(cl) unless cl.instance_of?(Module)
+  end
+
   def Mutex_m.append_features(cl) # :nodoc:
     super
     define_aliases(cl) unless cl.instance_of?(Module)
