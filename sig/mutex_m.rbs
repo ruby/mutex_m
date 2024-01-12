@@ -5,7 +5,7 @@
 #
 # Start by requiring the standard library Mutex_m:
 #
-#     require "mutex_m.rb"
+#     require "mutex_m"
 #
 # From here you can extend an object with Mutex instance methods:
 #
