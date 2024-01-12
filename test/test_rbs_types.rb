@@ -1,6 +1,10 @@
 require 'test/unit'
 require 'mutex_m'
-require 'rbs/unit_test'
+begin
+  require 'rbs/unit_test'
+rescue LoadError
+  return
+end
 
 module RBSTypeTest
   class Mutex_mInstanceTest < Test::Unit::TestCase
