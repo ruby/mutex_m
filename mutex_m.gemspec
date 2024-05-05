@@ -20,8 +20,4 @@ Gem::Specification.new do |spec|
 
   spec.files = %w[LICENSE.txt README.md lib/mutex_m.rb]
   spec.required_ruby_version = ">= 2.5"
-
-  spec.add_development_dependency "bundler"
-  spec.add_development_dependency "rake"
-  spec.add_development_dependency "test-unit"
 end
