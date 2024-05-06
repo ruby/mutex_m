@@ -17,7 +17,7 @@
 #
 # Start by requiring the standard library Mutex_m:
 #
-#   require "mutex_m.rb"
+#   require "mutex_m"
 #
 # From here you can extend an object with Mutex instance methods:
 #
@@ -40,16 +40,15 @@
 #
 module Mutex_m
 
-  VERSION = "0.1.1"
+  VERSION = "0.2.0"
+  Ractor.make_shareable(VERSION) if defined?(Ractor)
 
   def Mutex_m.define_aliases(cl) # :nodoc:
-    cl.module_eval %q{
-      alias locked? mu_locked?
-      alias lock mu_lock
-      alias unlock mu_unlock
-      alias try_lock mu_try_lock
-      alias synchronize mu_synchronize
-    }
+    cl.alias_method(:locked?, :mu_locked?)
+    cl.alias_method(:lock, :mu_lock)
+    cl.alias_method(:unlock, :mu_unlock)
+    cl.alias_method(:try_lock, :mu_try_lock)
+    cl.alias_method(:synchronize, :mu_synchronize)
   end
 
   def Mutex_m.prepend_features(cl) # :nodoc:
@@ -78,32 +77,32 @@ module Mutex_m
     mu_initialize
   end
 
-  # See Mutex#synchronize
+  # See Thread::Mutex#synchronize
   def mu_synchronize(&block)
     @_mutex.synchronize(&block)
   end
 
-  # See Mutex#locked?
+  # See Thread::Mutex#locked?
   def mu_locked?
     @_mutex.locked?
   end
 
-  # See Mutex#try_lock
+  # See Thread::Mutex#try_lock
   def mu_try_lock
     @_mutex.try_lock
   end
 
-  # See Mutex#lock
+  # See Thread::Mutex#lock
   def mu_lock
     @_mutex.lock
   end
 
-  # See Mutex#unlock
+  # See Thread::Mutex#unlock
   def mu_unlock
     @_mutex.unlock
   end
 
-  # See Mutex#sleep
+  # See Thread::Mutex#sleep
   def sleep(timeout = nil)
     @_mutex.sleep(timeout)
   end

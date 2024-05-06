@@ -98,4 +98,25 @@ class TestMutexM < Test::Unit::TestCase
     o = c.new(1)
     assert_equal(1, o.synchronize{o.x})
   end
+
+  def test_alias_extended_object
+    object = Object.new
+    object.extend(Mutex_m)
+
+    assert object.respond_to?(:locked?)
+    assert object.respond_to?(:lock)
+    assert object.respond_to?(:unlock)
+    assert object.respond_to?(:try_lock)
+    assert object.respond_to?(:synchronize)
+  end
+
+  def test_alias_included_class
+    object = NoArgInitializeChild.new
+
+    assert object.respond_to?(:locked?)
+    assert object.respond_to?(:lock)
+    assert object.respond_to?(:unlock)
+    assert object.respond_to?(:try_lock)
+    assert object.respond_to?(:synchronize)
+  end
 end

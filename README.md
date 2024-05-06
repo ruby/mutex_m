@@ -23,7 +23,7 @@ Or install it yourself as:
 Start by requiring the standard library Mutex_m:
 
 ```ruby
-require "mutex_m.rb"
+require "mutex_m"
 ```
 
 From here you can extend an object with Mutex instance methods:
