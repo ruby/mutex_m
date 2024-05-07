@@ -51,6 +51,11 @@ module Mutex_m
     cl.alias_method(:synchronize, :mu_synchronize)
   end
 
+  def Mutex_m.prepend_features(cl) # :nodoc:
+    super
+    define_aliases(cl) unless cl.instance_of?(Module)
+  end
+
   def Mutex_m.append_features(cl) # :nodoc:
     super
     define_aliases(cl) unless cl.instance_of?(Module)
