@@ -18,6 +18,6 @@ Gem::Specification.new do |spec|
   spec.metadata["bug_tracker_uri"] = "#{spec.homepage}/issues"
   spec.licenses = %w[Ruby BSD-2-Clause]
 
-  spec.files = %w[LICENSE.txt README.md lib/mutex_m.rb sig/mutex_m.rbs]
+  spec.files = %w[BSDL COPYING README.md lib/mutex_m.rb sig/mutex_m.rbs]
   spec.required_ruby_version = ">= 2.5"
 end
