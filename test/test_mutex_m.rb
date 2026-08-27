@@ -119,4 +119,12 @@ class TestMutexM < Test::Unit::TestCase
     assert object.respond_to?(:try_lock)
     assert object.respond_to?(:synchronize)
   end
+
+  def test_try_lock_starts_unlocked
+    object = Object.new
+    object.extend(Mutex_m)
+
+    assert_equal true, object.try_lock
+    assert_equal false, object.try_lock
+  end
 end
